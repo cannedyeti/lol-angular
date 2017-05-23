@@ -21,20 +21,19 @@ app.use(require('morgan')('dev'));
 
 app.get("/summoner/:name", function(req, res) {
   var league;
-  rp("https://na.api.pvp.net/api/lol/na/v1.4/summoner/by-name/CornJob?api_key=RGAPI-2e3d4429-ce3a-4f34-8301-3ca68c214c9c", function(error, res, body){
-    console.log("Error:", error)
-    console.log("Body:", body)
+  var name = req.params.name;
+  var data = {};
+  rp("https://na.api.pvp.net/api/lol/na/v1.4/summoner/by-name/" + name + "?api_key=RGAPI-2e3d4429-ce3a-4f34-8301-3ca68c214c9c", function(error, res, body){
     league = body;
   }).then(function(){
-    console.log("hi", league)
-    return res.json({league: league})
+    data = {
+      'name': name,
+      'info': JSON.parse(league)
+    };
+    res.send(data)
   })
 })
 
-// request("https://na.api.pvp.net/api/lol/na/v1.4/summoner/by-name/CornJob?api_key=RGAPI-2e3d4429-ce3a-4f34-8301-3ca68c214c9c", function(error, res, body){
-//   console.log("Error:", error)
-//   console.log("Body:", body)
-// })
 
 server.listen(process.env.PORT || 3000, function() {
   console.log("hey server");

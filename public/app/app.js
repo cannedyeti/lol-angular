@@ -2,12 +2,17 @@ angular.module('LoLApp', ['ui.router', 'LoLCtrl'])
 
 .config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
   function($stateProvider, $urlRouterProvider, $locationProvider){
-    // $urlRouterProvider.otherwise('/');
+    $urlRouterProvider.otherwise('/');
 
     $stateProvider.state('home', {
       url: '/',
-      templateUrl: './views/home.html',
-      controller: 'first'
+      templateUrl: '/views/home.html',
+      controller: 'search'
     })
-    $locationProvider.html5Mode(true);
+    .state('summoner', {
+      url: '/summoner/:name',
+      templateUrl: './views/summoner.html',
+      controller: 'summoner'
+    })
+    // $locationProvider.html5Mode(true);
   }]);
