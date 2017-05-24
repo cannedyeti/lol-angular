@@ -1,0 +1,9 @@
+<h2 style="color: black">{{greeting}}</h2>
+
+<h1>{{name}}, Level: {{results.info.summonerLevel}}</h1>
+
+
+<div ng-repeat="p in results.match_data.participants">
+  <p>Name: {{p.summonerName}} Champion: {{champs[p.championId].name}}</p>
+
+</div>

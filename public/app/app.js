@@ -14,5 +14,10 @@ angular.module('LoLApp', ['ui.router', 'LoLCtrl'])
       templateUrl: './views/summoner.html',
       controller: 'summoner'
     })
+    .state('live', {
+      url: '/live/:name',
+      templateUrl: './views/live.html',
+      controller: 'live'
+    })
     // $locationProvider.html5Mode(true);
   }]);

@@ -1,3 +1,14 @@
 <h2 style="color: black">{{greeting}}</h2>
 
-<h1>{{res}}</h1>
+<h1>{{info.id}} {{info.name}}, Level: {{info.summonerLevel}}</h1>
+
+<h3>Top 10 Mastery</h3>
+<div ng-repeat="c in champ_mastery|limitTo:10">
+  <p>Name: {{champs[c.championId].name}}, Title: {{champs[c.championId].title}}, level: {{c.championLevel}}</p>
+</div>
+
+<h3>Recent Matches</h3>
+<div ng-repeat="m in recentMatches.matches">
+  <p>{{champs[m.champion].name}}
+</div>
+
