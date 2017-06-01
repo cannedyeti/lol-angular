@@ -1,14 +1,17 @@
-<h2 style="color: black">{{greeting}}</h2>
+<div class="col-xs-8 text-center col-xs-offset-2">
 
-<h1>{{info.id}} {{info.name}}, Level: {{info.summonerLevel}}</h1>
+  <h2 style="color: black">{{greeting}}</h2>
 
-<h3>Top 10 Mastery</h3>
-<div ng-repeat="c in champ_mastery|limitTo:10">
-  <p>Name: {{champs[c.championId].name}}, Title: {{champs[c.championId].title}}, level: {{c.championLevel}}</p>
+  <h1>{{info.id}} {{info.name}}, Level: {{info.summonerLevel}}</h1>
+
+  <h3>Top 10 Mastery</h3>
+  <div class="col-xs-5" ng-repeat="c in champ_mastery|limitTo:10">
+    <p>Name: {{champs[c.championId].name}}, Title: {{champs[c.championId].title}}, level: {{c.championLevel}}</p>
+    <img ng-src="../app/img/{{c.championId}}-splash.jpg"/>
+  </div>
+  <h3>Recent Matches</h3>
+  <div class="col-xs-3" ng-repeat="m in recentMatches.matches|limitTo:5">
+    <p>{{champs[m.champion].name}}</p>
+    <img ng-src="../app/img/{{m.champion}}-splash.jpg"/>
+  </div>
 </div>
-
-<h3>Recent Matches</h3>
-<div ng-repeat="m in recentMatches.matches">
-  <p>{{champs[m.champion].name}}
-</div>
-

@@ -1,9 +1,21 @@
-<h2 style="color: black">{{greeting}}</h2>
+<div class="col-xs-8 text-center col-xs-offset-2">
 
-<h1>{{name}}, Level: {{results.info.summonerLevel}}</h1>
+  <h2 style="color: black">{{greeting}}</h2>
+  <div ng-show="name">
+    <h1>{{name}}, Level: {{results.info.summonerLevel}}</h1>
 
 
-<div ng-repeat="p in results.match_data.participants">
-  <p>Name: {{p.summonerName}} Champion: {{champs[p.championId].name}}</p>
-
+    <div class="col-xs-2 liveSummoner" ng-repeat="p in team1">
+      <p>Name: {{p.summonerName}} Champion: {{champs[p.championId].name}}</p>
+      <img ng-src="../app/img/{{p.championId}}-splash.jpg"/>
+    </div>
+    <br>
+    <div class="col-xs-2 liveSummoner" ng-repeat="p in team2">
+      <p>Name: {{p.summonerName}} Champion: {{champs[p.championId].name}}</p>
+      <img ng-src="../app/img/{{p.championId}}-splash.jpg"/>
+    </div>
+  </div>
+  <div ng-show="!name">
+    <h3>Summoner is not currently in a game</h3>
+  </div>
 </div>

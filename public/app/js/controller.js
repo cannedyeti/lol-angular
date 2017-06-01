@@ -16,14 +16,17 @@ angular.module('LoLCtrl', ['LoLServices'])
 
 .controller('live', ['$scope', '$http', '$location', '$state', 'Champs', function($scope, $http, $location, $state, Champs){
   $scope.greeting = 'live'
-  $scope.results
   $scope.champs = Champs.getChamps().data
   $http.get("/live/" + $state.params.name).success(function( data ) {
     console.log("live", data)
     $scope.results = data; 
+    $scope.participants = $scope.results.match_data.participants
+    $scope.team1 = $scope.participants.slice(0,5);
+    $scope.team2 = $scope.participants.slice(5,10);
     $scope.name = data.name;
     console.log( "Load was performed. " + $scope.name );
   });
+
 }])
 
 .controller('search', ['$scope', '$http', '$location', '$state', function($scope, $http, $location, $state){
